@@ -1,9 +1,13 @@
 var express = require('express');
 var passport = require('passport');
 var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
+//przypisanie pliku z konfiguracją, dobra praktyka żeby wydzielać confingi:
 var config = require('./config');
+//przypisanie aplikacji do zmiennej która na koniec będzie nasłuchiwać:
 var app = express();
 var googleProfile = {};
+
+app.use(express.static('assets'));
 
 passport.serializeUser(function(user, done) {
     done(null, user);
